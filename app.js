@@ -36,7 +36,7 @@ controller.hears(['unsubscribe from ([a-z0-9_\\-,\\s]+)'], 'direct_message,direc
   bot.reply(message, `Ok let me remove any subscriptions to ${ channelId }...`)
 
   let unsubUrl = `https://y026iupl4i.execute-api.us-east-1.amazonaws.com/latest/subscription?id_or_username=${ channelId }&slack_channel_id=${ message.channel }&unsubscribe=true`
-  request.post(newSubUrl, (error, subResponse) => {
+  request.post(unsubUrl, (error, subResponse) => {
     if (!error && subResponse.statusCode == 200) {
       bot.reply(message, `OK, you're unsubscribed and won't get anymore notification in this channel about ${ channelId }!`)
     } else if(subResponse.statusCode == 404) {
