@@ -1,0 +1,16 @@
+{
+  "name": "slackyoutube-chatbot",
+  "version": "1.0.0",
+  "description": "YouTube Slack chatbot",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Alex Peattie",
+  "license": "MIT",
+  "dependencies": {
+    "botkit": "^0.4.10",
+    "request": "^2.79.0"
+  }
+}
