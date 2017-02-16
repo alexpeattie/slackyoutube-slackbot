@@ -17,7 +17,7 @@ controller.hears(['subscribe to ([a-z0-9_\\-,\\s]+)'], 'direct_message,direct_me
     let { name, real_name } = response.user;
     bot.reply(message, `Ok <@${ name }>, I'll try and set up a subscription to ${ channelId }...`)
 
-    let newSubUrl = `https://y026iupl4i.execute-api.us-east-1.amazonaws.com/latest/subscription?id_or_username=${ channelId }&slack_channel_id=${ message.channel }`
+    let newSubUrl = `${ process.env.SUBSCRIBER_SERVICE_URL }/subscription?id_or_username=${ channelId }&slack_channel_id=${ message.channel }`
     request.post(newSubUrl, (error, subResponse) => {
       if (!error && subResponse.statusCode == 200) {
         bot.reply(message, `Good news, that's all set up for you :thumbsup:. You'll get a notification in this channel whenever ${ channelId } publishes a new video!`)
@@ -35,7 +35,7 @@ controller.hears(['unsubscribe from ([a-z0-9_\\-,\\s]+)'], 'direct_message,direc
 
   bot.reply(message, `Ok let me remove any subscriptions to ${ channelId }...`)
 
-  let unsubUrl = `https://y026iupl4i.execute-api.us-east-1.amazonaws.com/latest/subscription?id_or_username=${ channelId }&slack_channel_id=${ message.channel }&unsubscribe=true`
+  let unsubUrl = `${ process.env.SUBSCRIBER_SERVICE_URL }/subscription?id_or_username=${ channelId }&slack_channel_id=${ message.channel }&unsubscribe=true`
   request.post(unsubUrl, (error, subResponse) => {
     if (!error && subResponse.statusCode == 200) {
       bot.reply(message, `OK, you're unsubscribed and won't get anymore notification in this channel about ${ channelId }!`)
