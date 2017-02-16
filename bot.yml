@@ -3,10 +3,8 @@ author: Alex Peattie
 email: alexpeattie@gmail.com
 description: A mashup of Slack RTM, YouTube and Google PubSubHubbub
 config:
-  - name: SUBSCRIBER_SERVICE_URL
-    friendly_name: URL of subscriber microservice
-    info: Probably the URL of a Lambda function
-    type: secret
-    global: false
-slackscopes:
-  - bot
+- name: SUBSCRIBER_SERVICE_URL
+  friendly_name: URL of subscriber microservice
+  info: Probably the URL of a Lambda function
+  type: secret
+  global: false
